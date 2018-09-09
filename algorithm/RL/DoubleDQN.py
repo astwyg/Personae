@@ -17,7 +17,7 @@ class Algorithm(BaseRLTFModel):
     def __init__(self, session, env, a_space, s_space, **options):
         super(Algorithm, self).__init__(session, env, a_space, s_space, **options)
 
-        self.buffer = np.zeros((self.buffer_size, self.s_space + 1 + 1 + self.s_space))
+        self.buffer = np.zeros((self.buffer_size, self.s_space + 1 + 1 + self.s_space)) # buffer_size, s_space 啥时候定义的?
         self.buffer_length = 0
 
         self.update_q_target_step = 200
@@ -30,9 +30,9 @@ class Algorithm(BaseRLTFModel):
         self._init_summary_writer()
 
     def _init_input(self, *args):
-        self.s = tf.placeholder(tf.float32, [None, self.s_space])
+        self.s = tf.placeholder(tf.float32, [None, self.s_space]) # s means state
         self.s_next = tf.placeholder(tf.float32, [None, self.s_space])
-        self.q_next = tf.placeholder(tf.float32, [None, self.a_space])
+        self.q_next = tf.placeholder(tf.float32, [None, self.a_space]) # q is Q,
 
     def _init_nn(self, *args):
         self.q_eval = self.__build_critic_nn(self.s, 'q_eval')
@@ -159,7 +159,7 @@ def main(args):
 
     model_name = os.path.basename(__file__).split('.')[0]
 
-    env = Market(codes, start_date="2012-01-01", end_date="2018-01-01", **{
+    env = Market(codes, start_date="2012-01-01", end_date="2018-09-09", **{
         "market": market,
         # "use_sequence": True,
         "logger": generate_market_logger(model_name),
