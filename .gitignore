@@ -1,5 +1,9 @@
 # Dirs.
 .idea
+temp/model/*
 *.log
 *.ipynb_checkpoints
 *.local
+*.csv
+*.pkl
+/env

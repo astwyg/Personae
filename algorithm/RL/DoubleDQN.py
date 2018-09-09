@@ -146,17 +146,16 @@ class Algorithm(BaseRLTFModel):
 
 
 def main(args):
-    mode = args.mode
-    # mode = 'test'
-    codes = args.codes
+    mode = args.get("mode")
+    codes = args.get("codes")
     # codes = ["AU88", "RB88", "CU88", "AL88"]
     # codes = ["T9999"]
-    market = args.market
+    market = args.get("market")
     # market = 'future'
-    episode = args.episode
+    episode = args.get("episode")
     # episode = 2000
     # training_data_ratio = 0.5
-    training_data_ratio = args.training_data_ratio
+    training_data_ratio = args.get("training_data_ratio")
 
     model_name = os.path.basename(__file__).split('.')[0]
 

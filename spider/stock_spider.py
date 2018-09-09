@@ -24,10 +24,10 @@ class StockSpider(object):
 
 
 def main(args):
-    codes = args.codes
+    codes = args.get("codes")
     # codes = ['sh']
     for _code in codes:
-        StockSpider(_code, args.start, args.end).crawl()
+        StockSpider(_code, args.get("start"), args.get("end")).crawl()
 
 
 if __name__ == '__main__':
